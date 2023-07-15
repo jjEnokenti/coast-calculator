@@ -8,6 +8,9 @@ authors = ["mgd <mr.zizikk@gamil.com>"]
 python = "^3.10"
 fastapi = "^0.100.0"
 pre-commit = "^3.3.3"
+asyncpg = "^0.28.0"
+tortoise-orm = {extras = ["asyncpg"], version = "^0.19.3"}
+python-dotenv = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
