@@ -20,11 +20,13 @@ from src.schemas import (
 
 
 async def get_rate_all() -> RateListPydantic:
+    """Get list with all rates."""
     return RateListPydantic(rates=await Rate.all())
 
 
 async def _get_rate_by_date_and_cargo_type(
         date: datetime.date, cargo_type: str) -> Rate:
+    """Get rate by date and cargo type."""
     try:
         return await Rate.filter(
             date=date, cargo_type=cargo_type).first()
@@ -38,6 +40,7 @@ async def calculate_insurance(
         date: datetime.date,
         price: int,
         cargo_type: str) -> InsuranceResponse | HTTPException:
+    """Calculate insurance."""
     rate = await _get_rate_by_date_and_cargo_type(
         date=date,
         cargo_type=cargo_type
@@ -49,6 +52,7 @@ async def calculate_insurance(
 
 
 async def create_rate(data: list[RatePydantic]) -> RateListPydantic:
+    """Create new or update exists rates."""
     try:
         async with transactions.in_transaction():
             rates = []
@@ -74,6 +78,7 @@ async def create_rate(data: list[RatePydantic]) -> RateListPydantic:
 
 
 async def prepare_to_save_data(data: RateFileRequest) -> RateListPydantic:
+    """Prepare data from file for save into db."""
     try:
         new_rates = []
 
@@ -90,6 +95,7 @@ async def prepare_to_save_data(data: RateFileRequest) -> RateListPydantic:
 
 
 async def save_data_from_file(data: UploadFile) -> RateListPydantic:
+    """Convert file data to json and save."""
     try:
         data = json.loads(await data.read())
     except Exception as err:
