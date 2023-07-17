@@ -11,6 +11,7 @@ load_dotenv()
 
 
 class BaseConfig:
+    """Project configs."""
     DB_USER = os.environ.get('DB_USER', 'postgres')
     DB_NAME = os.getenv('DB_NAME', 'postgres')
     DB_PASSWORD = os.getenv('DB_PASSWORD', 'postgres')
