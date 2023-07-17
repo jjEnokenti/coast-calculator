@@ -20,5 +20,21 @@ services:
       timeout: 5s
       retries: 5
 
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - ${API_PORT}:8000
+    volumes:
+      - .:/app
+    command: bash -c 'uvicorn main:app --host ${API_HOST} --port ${API_PORT}'
+    depends_on:
+      db:
+        condition: service_healthy
+
 volumes:
   postgres-data:
