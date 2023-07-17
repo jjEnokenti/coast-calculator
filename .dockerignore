@@ -1,0 +1,11 @@
+.git
+.idea
+__pycache__
+postgres-data
+
+.pre-commit-config.yaml
+.env.example
+Dockerfile
+setup.cfg
+README.md
+.gitignore
