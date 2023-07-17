@@ -4,7 +4,7 @@ import decimal
 from pydantic import BaseModel
 from tortoise.contrib.pydantic import pydantic_model_creator
 
-from models import Rate
+from src.models import Rate
 
 
 RatePydantic = pydantic_model_creator(Rate)
