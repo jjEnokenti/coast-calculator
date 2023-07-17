@@ -11,9 +11,19 @@ pre-commit = "^3.3.3"
 asyncpg = "^0.28.0"
 tortoise-orm = {extras = ["asyncpg"], version = "^0.19.3"}
 python-dotenv = "^1.0.0"
+uvicorn = "^0.23.0"
+python-multipart = "^0.0.6"
+aerich = "^0.7.1"
+pydantic = "1.10.9"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
+
+
+[tool.aerich]
+tortoise_orm = "src.config.tortoise_config.TORTOISE_ORM"
+location = "./src/db/migrations"
+src_folder = "./."
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
