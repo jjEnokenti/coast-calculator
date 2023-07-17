@@ -13,9 +13,9 @@ from src.models import Rate
 from src.schemas import (
     InsuranceResponse,
     RateCreatePydantic,
+    RateFileRequest,
     RateListPydantic,
     RatePydantic,
-    RateRequestModel,
 )
 
 
@@ -73,7 +73,7 @@ async def create_rate(data: list[RatePydantic]) -> RateListPydantic:
             detail=err, status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-async def prepare_to_save_data(data: RateRequestModel) -> RateListPydantic:
+async def prepare_to_save_data(data: RateFileRequest) -> RateListPydantic:
     try:
         new_rates = []
 
