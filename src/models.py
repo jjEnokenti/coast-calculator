@@ -7,11 +7,13 @@ from tortoise import (
 
 
 class CargoTypes(str, Enum):
+    """Cargo type enum."""
     glass = 'Glass'
     other = 'Other'
 
 
 class Rate(models.Model):
+    """Rate model."""
     id = fields.IntField(pk=True)
     cargo_type: CargoTypes = fields.CharEnumField(
         CargoTypes, max_length=5, default=CargoTypes.other
